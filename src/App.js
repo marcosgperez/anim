@@ -105,7 +105,15 @@ function App() {
             repeat: Infinity,
             repeatDelay: 2,
           }}
-        />
+        >
+          <svg
+            viewBox="0 0 120 120"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="60" cy="60" r="50" />
+          </svg>
+        </motion.li>
         <motion.li
           className="circle circle-top"
           animate={controls2}
@@ -115,7 +123,15 @@ function App() {
             repeat: Infinity,
             repeatDelay: 2,
           }}
-        />
+        >
+          <svg
+            viewBox="0 0 120 120"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="60" cy="60" r="50" />
+          </svg>
+        </motion.li>
         <motion.li
           className="circle circle-bottom"
           animate={controls3}
@@ -125,7 +141,15 @@ function App() {
             repeat: Infinity,
             repeatDelay: 2,
           }}
-        />
+        >
+          <svg
+            viewBox="0 0 120 120"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="60" cy="60" r="50" />
+          </svg>
+        </motion.li>
         <motion.li
           className="circle circle-right"
           animate={controls4}
@@ -135,7 +159,15 @@ function App() {
             repeat: Infinity,
             repeatDelay: 2,
           }}
-        />
+        >
+          <svg
+            viewBox="0 0 120 120"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="60" cy="60" r="50" />
+          </svg>
+        </motion.li>
         <motion.li
           className="circle circle-left"
           animate={controls5}
@@ -145,7 +177,15 @@ function App() {
             repeat: Infinity,
             repeatDelay: 2,
           }}
-        />
+        >
+          <svg
+            viewBox="0 0 120 120"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="60" cy="60" r="50" />
+          </svg>
+        </motion.li>
         <motion.div
           className="triangle-dad"
           animate={triangles}
