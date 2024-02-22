@@ -13,7 +13,33 @@ function App() {
   const [circleLeftX, setCircleLeftX] = useState(0);
   useEffect(() => {
     const animateCircles = () => {
+      const reset = () => {
+        return new Promise(resolve => {
+          setCircleCenterSize(35); 
+          setCircleTopY(0); 
+          setCircleBottomY(0); 
+          setCircleRightX(0); 
+          setCircleLeftX(0); 
+          resolve();
+        });
+      };
+      const toSides = () => {
+        return new Promise(resolve => {
+          setCircleRightX(30);
+          setCircleLeftX(-30);
+          resolve();
+        });
+      };
+      const toTopBottom = () => {
+        return new Promise(resolve => {
+          setCircleTopY(-30);
+          setCircleBottomY(30);
+          resolve();
+        })
+      };
+
       const animations = [
+        // First frame
         () => new Promise(resolve => setTimeout(() => {
           setCircleCenterSize(35);
           setCircleTopSize(35);
@@ -22,7 +48,7 @@ function App() {
           setCircleLeftSize(35);
           resolve();
         }, 1000)),
-
+        // + Animation
         () => new Promise(resolve => setTimeout(() => {
           setCircleCenterSize(52.5); // Agrandar un 50%
           setCircleTopY(-30); // Mover hacia arriba 30px
@@ -31,79 +57,52 @@ function App() {
           setCircleLeftX(-30); // Mover hacia la izquierda 30px
           resolve();
         }, 1000)),
-
-
+        // Center all circles
         () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(35); // Volver al tamaño original
-          setCircleTopY(0); // Volver a la posición original
-          setCircleBottomY(0); // Volver a la posición original
-          setCircleRightX(0); // Volver a la posición original
-          setCircleLeftX(0); // Volver a la posición original
+          reset();
           resolve();
         }, 1000)),
-
-
+        // To sides
         () => new Promise(resolve => setTimeout(() => {
-          setCircleRightX(30); // Mover hacia la derecha 30px
-          setCircleLeftX(-30); // Mover hacia la izquierda 30px
+          toSides();
           resolve();
         }, 1000)),
-
-
+        // Center all circles
         () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(35); // Volver al tamaño original
-          setCircleTopY(0); // Volver a la posición original
-          setCircleBottomY(0); // Volver a la posición original
-          setCircleRightX(0); // Volver a la posición original
-          setCircleLeftX(0); // Volver a la posición original
+          reset();
           resolve();
         }, 1000)),
-
+        // To top bottom
         () => new Promise(resolve => setTimeout(() => {
-          setCircleTopY(30); // Mover hacia la top 30px
-          setCircleBottomY(-30); // Mover hacia la bot 30px
+          toTopBottom();
           resolve();
         }, 1000)),
-
+        // Center all circles
         () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(35); // Volver al tamaño original
-          setCircleTopY(0); // Volver a la posición original
-          setCircleBottomY(0); // Volver a la posición original
-          setCircleRightX(0); // Volver a la posición original
-          setCircleLeftX(0); // Volver a la posición original
+          reset();
           resolve();
         }, 1000)),
-
+        // To sides
         () => new Promise(resolve => setTimeout(() => {
-          setCircleRightX(30); // Mover hacia la derecha 30px
-          setCircleLeftX(-30); // Mover hacia la izquierda 30px
+          toSides();
           resolve();
         }, 1000)),
-
+        // Center all circles
         () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(35); // Volver al tamaño original
-          setCircleTopY(0); // Volver a la posición original
-          setCircleBottomY(0); // Volver a la posición original
-          setCircleRightX(0); // Volver a la posición original
-          setCircleLeftX(0); // Volver a la posición original
+          reset();
           resolve();
         }, 1000)),
-
+        // To top bottom
         () => new Promise(resolve => setTimeout(() => {
-          setCircleTopY(30); // Mover hacia la top 30px
-          setCircleBottomY(-30); // Mover hacia la bot 30px
+          toTopBottom();
           resolve();
         }, 1000)),
-
+        // Center all circles
         () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(35); // Volver al tamaño original
-          setCircleTopY(0); // Volver a la posición original
-          setCircleBottomY(0); // Volver a la posición original
-          setCircleRightX(0); // Volver a la posición original
-          setCircleLeftX(0); // Volver a la posición original
+          reset();
           resolve();
         }, 1000)),
-
+        // Hide all circles
         () => new Promise(resolve => setTimeout(() => {
           setCircleCenterSize(0);
           setCircleTopSize(0);
@@ -113,14 +112,12 @@ function App() {
           resolve();
         }, 1000)),
       ];
-  
       const runAnimations = async () => {
         for (let animation of animations) {
           await animation();
         }
         runAnimations();
       };
-  
       runAnimations();
     };
     animateCircles();
