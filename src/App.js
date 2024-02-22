@@ -204,14 +204,14 @@ function App() {
                   <animate
                     attributeName="baseFrequency"
                     dur="10s"
-                    values="0.02;0.5;0.02"
+                    values="0.02;0.09;0.02"
                     repeatCount="indefinite"
                   />
                 </feTurbulence>
                 <feDisplacementMap
                   in="SourceGraphic"
                   in2="turbulence"
-                  scale="100"
+                  scale="25"
                   xChannelSelector="R"
                   yChannelSelector="G"
                 />
