@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 function App() {
-  const [circleCenterSize, setCircleCenterSize] = useState(0); // Tamaño inicial del radio para circle1
+  const [circleCenterSize, setCircleCenterSize] = useState(0); 
   const [circleTopSize, setCircleTopSize] = useState(0);
   const [circleBottomSize, setCircleBottomSize] = useState(0);
   const [circleRightSize, setCircleRightSize] = useState(0);
@@ -12,25 +12,32 @@ function App() {
   const [circleLeftX, setCircleLeftX] = useState(0);
   const [polygonScale, setPolygonScale] = useState(1);
   const [polygonRotation, setPolygonRotation] = useState(0);
+  const [isShrinking, setIsShrinking] = useState(false);
   useEffect(() => {
     const scaleAndRotatePolygons = () => {
       return new Promise((resolve) => {
         setPolygonScale(2400);
         setPolygonRotation(-20);
-        setTimeout(resolve, 3000);
+        setTimeout(() => {
+          resolve();
+        }, 3000);
       });
     };
     const resetPolygons = () => {
       return new Promise((resolve) => {
+        setIsShrinking(true);
         setPolygonScale(1);
         setPolygonRotation(0);
-        setTimeout(resolve, 600);
+        setTimeout(() => {
+          setIsShrinking(false); // Restablece al finalizar la animación
+          resolve();
+        }, 600); 
       });
     };
     const animateCircles = () => {
       const reset = () => {
         return new Promise((resolve) => {
-          setCircleCenterSize(20);
+          setCircleCenterSize(35);
           setCircleTopY(0);
           setCircleBottomY(0);
           setCircleTopSize(0);
@@ -44,21 +51,21 @@ function App() {
       };
       const toSides = () => {
         return new Promise((resolve) => {
-          setCircleCenterSize(20);
-          setCircleRightSize(35);
-          setCircleLeftSize(35);
-          setCircleRightX(30);
-          setCircleLeftX(-30);
+          setCircleCenterSize(35);
+          setCircleRightSize(50);
+          setCircleLeftSize(50);
+          setCircleRightX(35);
+          setCircleLeftX(-35);
           resolve();
         });
       };
       const toTopBottom = () => {
         return new Promise((resolve) => {
-          setCircleCenterSize(20);
-          setCircleTopSize(35);
-          setCircleBottomSize(35);
-          setCircleTopY(-30);
-          setCircleBottomY(30);
+          setCircleCenterSize(35);
+          setCircleTopSize(50);
+          setCircleBottomSize(50);
+          setCircleTopY(-35);
+          setCircleBottomY(35);
           resolve();
         });
       };
@@ -67,11 +74,11 @@ function App() {
         () =>
           new Promise((resolve) =>
             setTimeout(() => {
-              setCircleCenterSize(35);
-              setCircleTopSize(35);
-              setCircleBottomSize(35);
-              setCircleRightSize(35);
-              setCircleLeftSize(35);
+              setCircleCenterSize(45);
+              setCircleTopSize(45);
+              setCircleBottomSize(45);
+              setCircleRightSize(45);
+              setCircleLeftSize(45);
               resolve();
             }, 700)
           ),
@@ -79,11 +86,11 @@ function App() {
         () =>
           new Promise((resolve) =>
             setTimeout(() => {
-              setCircleCenterSize(52.5); // Agrandar un 50%
-              setCircleTopY(-30); // Mover hacia arriba 30px
-              setCircleBottomY(30); // Mover hacia abajo 30px
-              setCircleRightX(30); // Mover hacia la derecha 30px
-              setCircleLeftX(-30); // Mover hacia la izquierda 30px
+              setCircleCenterSize(45); // Agrandar un 50%
+              setCircleTopY(-35); // Mover hacia arriba 30px
+              setCircleBottomY(35); // Mover hacia abajo 30px
+              setCircleRightX(35); // Mover hacia la derecha 30px
+              setCircleLeftX(-35); // Mover hacia la izquierda 30px
               resolve();
             }, 400)
           ),
@@ -93,7 +100,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // To sides
         () =>
@@ -101,7 +108,7 @@ function App() {
             setTimeout(() => {
               toSides();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // Center all circles
         () =>
@@ -109,7 +116,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // To top bottom
         () =>
@@ -117,7 +124,7 @@ function App() {
             setTimeout(() => {
               toTopBottom();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // Center all circles
         () =>
@@ -125,7 +132,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // To sides
         () =>
@@ -133,7 +140,7 @@ function App() {
             setTimeout(() => {
               toSides();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // Center all circles
         () =>
@@ -141,7 +148,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // To top bottom
         () =>
@@ -149,7 +156,7 @@ function App() {
             setTimeout(() => {
               toTopBottom();
               resolve();
-            }, 400)
+            }, 500)
           ),
         // Center all circles
         () =>
@@ -165,7 +172,7 @@ function App() {
               setCircleRightSize(0);
               setCircleLeftSize(0);
               resolve();
-            }, 400)
+            }, 500)
           ),
         // Hide all circles
         () =>
@@ -177,7 +184,7 @@ function App() {
               setCircleRightSize(0);
               setCircleLeftSize(0);
               resolve();
-            }, 400)
+            }, 500)
           ),
         // Scale and rotate polygons
         () => scaleAndRotatePolygons(),
@@ -306,7 +313,7 @@ function App() {
           </svg>
         </div>
         <div
-          className="triangle-mask"
+          className={`triangle-mask ${isShrinking ? "no-transition" : ""}`}
           style={{
             transform: `scale(${polygonScale}) rotate(${polygonRotation}deg)`,
           }}

@@ -66,3 +66,7 @@ body, #root {
 pattern > image {
   animation: colorChange 3s infinite linear;
 }
+
+.triangle-mask.no-transition {
+  transition: none !important;
+}
