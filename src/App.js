@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     const scaleAndRotatePolygons = () => {
       return new Promise((resolve) => {
-        setPolygonScale(1600);
+        setPolygonScale(2400);
         setPolygonRotation(-20);
         setTimeout(resolve, 3000);
       });
@@ -85,7 +85,7 @@ function App() {
               setCircleRightX(30); // Mover hacia la derecha 30px
               setCircleLeftX(-30); // Mover hacia la izquierda 30px
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Center all circles
         () =>
@@ -93,7 +93,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // To sides
         () =>
@@ -101,7 +101,7 @@ function App() {
             setTimeout(() => {
               toSides();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Center all circles
         () =>
@@ -109,7 +109,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // To top bottom
         () =>
@@ -117,7 +117,7 @@ function App() {
             setTimeout(() => {
               toTopBottom();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Center all circles
         () =>
@@ -125,7 +125,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // To sides
         () =>
@@ -133,7 +133,7 @@ function App() {
             setTimeout(() => {
               toSides();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Center all circles
         () =>
@@ -141,7 +141,7 @@ function App() {
             setTimeout(() => {
               reset();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // To top bottom
         () =>
@@ -149,7 +149,7 @@ function App() {
             setTimeout(() => {
               toTopBottom();
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Center all circles
         () =>
@@ -165,7 +165,7 @@ function App() {
               setCircleRightSize(0);
               setCircleLeftSize(0);
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Hide all circles
         () =>
@@ -177,7 +177,7 @@ function App() {
               setCircleRightSize(0);
               setCircleLeftSize(0);
               resolve();
-            }, 700)
+            }, 400)
           ),
         // Scale and rotate polygons
         () => scaleAndRotatePolygons(),
@@ -337,27 +337,35 @@ function App() {
               </filter>
               <mask id="triangleMask">
                 <rect width="100%" height="100%" fill="black" />
-                <polygon
-                  className="polygon-1"
-                  points="0,10 20,0 100,100"
+                <path
+                  d="M 0 10 Q 20 -60 100 100"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+                <path
+                  d="M 100 20 Q 40 -60 100 100"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+                <path
+                  d="M 0 50 Q 30 50 100 100"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+                <path
+                  d="M 100 100 Q 150 150 200 180"
                   fill="white"
                   filter="url(#softGlow)"
                 />
                 <polygon
                   className="polygon-1"
-                  points="100,20 40,0 100,100"
+                  points="100, 100 180, 120 220,180"
                   fill="white"
                   filter="url(#softGlow)"
                 />
                 <polygon
                   className="polygon-1"
-                  points="100, 100 180, 200 200,180"
-                  fill="white"
-                  filter="url(#softGlow)"
-                />
-                <polygon
-                  className="polygon-1"
-                  points="100, 100 180, 250 140,180"
+                  points="100, 100 180, 220 140,180"
                   fill="white"
                   filter="url(#softGlow)"
                 />
