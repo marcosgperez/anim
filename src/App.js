@@ -339,13 +339,25 @@ function App() {
                 <rect width="100%" height="100%" fill="black" />
                 <polygon
                   className="polygon-1"
-                  points="0,20 20,0 100,100"
+                  points="0,10 20,0 100,100"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+                <polygon
+                  className="polygon-1"
+                  points="100,20 40,0 100,100"
                   fill="white"
                   filter="url(#softGlow)"
                 />
                 <polygon
                   className="polygon-1"
                   points="100, 100 180, 200 200,180"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+                <polygon
+                  className="polygon-1"
+                  points="100, 100 180, 250 140,180"
                   fill="white"
                   filter="url(#softGlow)"
                 />
