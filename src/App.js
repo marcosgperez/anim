@@ -10,8 +10,23 @@ function App() {
   const [circleBottomY, setCircleBottomY] = useState(0);
   const [circleRightX, setCircleRightX] = useState(0);
   const [circleLeftX, setCircleLeftX] = useState(0);
-
+  const [polygonScale, setPolygonScale] = useState(1);
+  const [polygonRotation, setPolygonRotation] = useState(0);
   useEffect(() => {
+    const scaleAndRotatePolygons = () => {
+      return new Promise((resolve) => {
+        setPolygonScale(1600);
+        setPolygonRotation(-20);
+        setTimeout(resolve, 3000);
+      });
+    };
+    const resetPolygons = () => {
+      return new Promise((resolve) => {
+        setPolygonScale(1);
+        setPolygonRotation(0);
+        setTimeout(resolve, 600);
+      });
+    };
     const animateCircles = () => {
       const reset = () => {
         return new Promise((resolve) => {
@@ -164,6 +179,9 @@ function App() {
               resolve();
             }, 700)
           ),
+        // Scale and rotate polygons
+        () => scaleAndRotatePolygons(),
+        () => resetPolygons(),
       ];
       const runAnimations = async () => {
         for (let animation of animations) {
@@ -283,6 +301,78 @@ function App() {
               height="100%"
               mask="url(#circleMask)"
               fill="url(#imagePattern)"
+              filter="url(#deformFilter)"
+            />
+          </svg>
+        </div>
+        <div
+          className="triangle-mask"
+          style={{
+            transform: `scale(${polygonScale}) rotate(${polygonRotation}deg)`,
+          }}
+        >
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <filter
+                id="softGlow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+              >
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  stdDeviation="1.5"
+                  result="blur"
+                />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <mask id="triangleMask">
+                <rect width="100%" height="100%" fill="black" />
+                <polygon
+                  className="polygon-1"
+                  points="0,20 20,0 100,100"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+                <polygon
+                  className="polygon-1"
+                  points="100, 100 180, 200 200,180"
+                  fill="white"
+                  filter="url(#softGlow)"
+                />
+              </mask>
+            </defs>
+            <rect
+              width="100%"
+              height="100%"
+              mask="url(#triangleMask)"
+              fill="url(#triangleImagePattern)"
+            />
+            <defs>
+              <pattern
+                id="triangleImagePattern"
+                patternUnits="userSpaceOnUse"
+                width="200"
+                height="200"
+                filter="url(#deformFilter)"
+              >
+                <image href="/fondo.jpg" x="0" y="0" width="500" height="300" />
+              </pattern>
+            </defs>
+            <rect
+              width="100%"
+              height="100%"
+              mask="url(#triangleMask)"
+              fill="url(#triangleImagePattern)"
               filter="url(#deformFilter)"
             />
           </svg>

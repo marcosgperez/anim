@@ -31,6 +31,22 @@ body, #root {
   transition: all 0.5s ease;
 }
 
+.triangle-mask {
+  width: 1px;
+  height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
 @keyframes colorChange {
   0% { 
     filter: hue-rotate(0deg); 
