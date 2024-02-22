@@ -123,6 +123,13 @@ function App() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
               <mask id="circleMask">
                 <rect width="100%" height="100%" fill="black" />
                 <circle
@@ -130,6 +137,7 @@ function App() {
                   cx="100"
                   cy="100"
                   r={circleCenterSize}
+                  filter="url(#glow)"
                   fill="white"
                 />
                 <circle
@@ -137,6 +145,7 @@ function App() {
                   cx="100"
                   cy={100 + circleTopY}
                   r={circleTopSize}
+                  filter="url(#glow)"
                   fill="white"
                 />
                 <circle
@@ -144,6 +153,7 @@ function App() {
                   cx="100"
                   cy={100 + circleBottomY}
                   r={circleBottomSize}
+                  filter="url(#glow)"
                   fill="white"
                 />
                 <circle
@@ -151,6 +161,7 @@ function App() {
                   cx={100 + circleRightX}
                   cy="100"
                   r={circleRightSize}
+                  filter="url(#glow)"
                   fill="white"
                 />
                 <circle
@@ -158,6 +169,7 @@ function App() {
                   cx={100 + circleLeftX}
                   cy="100"
                   r={circleLeftSize}
+                  filter="url(#glow)"
                   fill="white"
                 />
               </mask>
