@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-
 function App() {
   const [circleCenterSize, setCircleCenterSize] = useState(0); // Tamaño inicial del radio para circle1
   const [circleTopSize, setCircleTopSize] = useState(0);
@@ -11,6 +10,7 @@ function App() {
   const [circleBottomY, setCircleBottomY] = useState(0);
   const [circleRightX, setCircleRightX] = useState(0);
   const [circleLeftX, setCircleLeftX] = useState(0);
+
   useEffect(() => {
     const animateCircles = () => {
       const reset = () => {
@@ -194,6 +194,29 @@ function App() {
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
+              <filter id="deformFilter">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.02"
+                  numOctaves="0.1"
+                  result="turbulence"
+                >
+                  <animate
+                    attributeName="baseFrequency"
+                    dur="10s"
+                    values="0.02;0.5;0.02"
+                    repeatCount="indefinite"
+                  />
+                </feTurbulence>
+                <feDisplacementMap
+                  in="SourceGraphic"
+                  in2="turbulence"
+                  scale="100"
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                />
+              </filter>
+
               <mask id="circleMask">
                 <rect width="100%" height="100%" fill="black" />
                 <circle
@@ -250,10 +273,18 @@ function App() {
                 patternUnits="userSpaceOnUse"
                 width="200"
                 height="200"
+                filter="url(#deformFilter)"
               >
                 <image href="/kal.jpeg" x="0" y="0" width="200" height="200" />
               </pattern>
             </defs>
+            <rect
+              width="100%"
+              height="100%"
+              mask="url(#circleMask)"
+              fill="url(#imagePattern)"
+              filter="url(#deformFilter)"
+            />
           </svg>
         </div>
       </div>
