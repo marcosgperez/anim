@@ -1,78 +1,32 @@
-body {
+body, #root {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   margin: 0;
   padding: 0;
-}
-
-#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: black;
-  height: 100%;
-  width: 100%;
 }
 
 .App {
   position: relative;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
+  height: 100%;
 }
 
-ul {
-  list-style-type: none;
+.circle-mask {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .circle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  border-radius: 100%;
-  width: 1px;
-  height: 1px;
-  box-shadow: 0px 0px 0.3px 0.03px rgba(255,255,255,0.5);
-}
-
-.triangle-dad {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100vw;
-  height: 100vh;
-}
-
-.triangle-wraper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-
-.triangle-left {
-  width: 0; 
-  border-left: 47vw solid #ffffff;
-  border-top: 19vh solid transparent;
-  border-bottom: 23vw solid transparent; 
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: rotate(32deg) !important;
-}
-
-.triangle-right {
-  width: 0; 
-  border-right: 52vw solid #ffffff;
-  border-top: 12vh solid transparent;
-  border-bottom: 12vw solid transparent;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  transform: rotate(25deg) !important;
+  transition: all 1s ease;
 }
