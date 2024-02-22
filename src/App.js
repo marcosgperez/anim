@@ -14,120 +14,156 @@ function App() {
   useEffect(() => {
     const animateCircles = () => {
       const reset = () => {
-        return new Promise(resolve => {
-          setCircleCenterSize(20); 
-          setCircleTopY(0); 
-          setCircleBottomY(0); 
-          setCircleTopSize(0); 
-          setCircleBottomSize(0); 
-          setCircleRightX(0); 
-          setCircleLeftX(0); 
-          setCircleRightSize(0); 
-          setCircleLeftSize(0); 
+        return new Promise((resolve) => {
+          setCircleCenterSize(20);
+          setCircleTopY(0);
+          setCircleBottomY(0);
+          setCircleTopSize(0);
+          setCircleBottomSize(0);
+          setCircleRightX(0);
+          setCircleLeftX(0);
+          setCircleRightSize(0);
+          setCircleLeftSize(0);
           resolve();
         });
       };
       const toSides = () => {
-        return new Promise(resolve => {
-          setCircleCenterSize(20); 
-          setCircleRightSize(35); 
-          setCircleLeftSize(35); 
+        return new Promise((resolve) => {
+          setCircleCenterSize(20);
+          setCircleRightSize(35);
+          setCircleLeftSize(35);
           setCircleRightX(30);
           setCircleLeftX(-30);
           resolve();
         });
       };
       const toTopBottom = () => {
-        return new Promise(resolve => {
-          setCircleCenterSize(20); 
-          setCircleTopSize(35); 
-          setCircleBottomSize(35); 
+        return new Promise((resolve) => {
+          setCircleCenterSize(20);
+          setCircleTopSize(35);
+          setCircleBottomSize(35);
           setCircleTopY(-30);
           setCircleBottomY(30);
           resolve();
-        })
+        });
       };
       const animations = [
         // First frame
-        () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(35);
-          setCircleTopSize(35);
-          setCircleBottomSize(35);
-          setCircleRightSize(35);
-          setCircleLeftSize(35);
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              setCircleCenterSize(35);
+              setCircleTopSize(35);
+              setCircleBottomSize(35);
+              setCircleRightSize(35);
+              setCircleLeftSize(35);
+              resolve();
+            }, 700)
+          ),
         // + Animation
-        () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(52.5); // Agrandar un 50%
-          setCircleTopY(-30); // Mover hacia arriba 30px
-          setCircleBottomY(30); // Mover hacia abajo 30px
-          setCircleRightX(30); // Mover hacia la derecha 30px
-          setCircleLeftX(-30); // Mover hacia la izquierda 30px
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              setCircleCenterSize(52.5); // Agrandar un 50%
+              setCircleTopY(-30); // Mover hacia arriba 30px
+              setCircleBottomY(30); // Mover hacia abajo 30px
+              setCircleRightX(30); // Mover hacia la derecha 30px
+              setCircleLeftX(-30); // Mover hacia la izquierda 30px
+              resolve();
+            }, 700)
+          ),
         // Center all circles
-        () => new Promise(resolve => setTimeout(() => {
-          reset();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              reset();
+              resolve();
+            }, 700)
+          ),
         // To sides
-        () => new Promise(resolve => setTimeout(() => {
-          toSides();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              toSides();
+              resolve();
+            }, 700)
+          ),
         // Center all circles
-        () => new Promise(resolve => setTimeout(() => {
-          reset();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              reset();
+              resolve();
+            }, 700)
+          ),
         // To top bottom
-        () => new Promise(resolve => setTimeout(() => {
-          toTopBottom();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              toTopBottom();
+              resolve();
+            }, 700)
+          ),
         // Center all circles
-        () => new Promise(resolve => setTimeout(() => {
-          reset();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              reset();
+              resolve();
+            }, 700)
+          ),
         // To sides
-        () => new Promise(resolve => setTimeout(() => {
-          toSides();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              toSides();
+              resolve();
+            }, 700)
+          ),
         // Center all circles
-        () => new Promise(resolve => setTimeout(() => {
-          reset();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              reset();
+              resolve();
+            }, 700)
+          ),
         // To top bottom
-        () => new Promise(resolve => setTimeout(() => {
-          toTopBottom();
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              toTopBottom();
+              resolve();
+            }, 700)
+          ),
         // Center all circles
-        () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(0); 
-          setCircleTopY(0); 
-          setCircleBottomY(0); 
-          setCircleTopSize(0); 
-          setCircleBottomSize(0); 
-          setCircleRightX(0); 
-          setCircleLeftX(0); 
-          setCircleRightSize(0); 
-          setCircleLeftSize(0); 
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              setCircleCenterSize(0);
+              setCircleTopY(0);
+              setCircleBottomY(0);
+              setCircleTopSize(0);
+              setCircleBottomSize(0);
+              setCircleRightX(0);
+              setCircleLeftX(0);
+              setCircleRightSize(0);
+              setCircleLeftSize(0);
+              resolve();
+            }, 700)
+          ),
         // Hide all circles
-        () => new Promise(resolve => setTimeout(() => {
-          setCircleCenterSize(0);
-          setCircleTopSize(0);
-          setCircleBottomSize(0);
-          setCircleRightSize(0);
-          setCircleLeftSize(0);
-          resolve();
-        }, 700)),
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => {
+              setCircleCenterSize(0);
+              setCircleTopSize(0);
+              setCircleBottomSize(0);
+              setCircleRightSize(0);
+              setCircleLeftSize(0);
+              resolve();
+            }, 700)
+          ),
       ];
       const runAnimations = async () => {
         for (let animation of animations) {
@@ -152,10 +188,10 @@ function App() {
           >
             <defs>
               <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                 <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
               <mask id="circleMask">
