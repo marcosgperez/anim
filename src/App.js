@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 function App() {
   const [circleCenterSize, setCircleCenterSize] = useState(0); 
   const [circleTopSize, setCircleTopSize] = useState(0);
