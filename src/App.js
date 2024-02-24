@@ -29,7 +29,7 @@ function App() {
         setPolygonScale(1);
         setPolygonRotation(0);
         setTimeout(() => {
-          setIsShrinking(false); // Restablece al finalizar la animación
+          setIsShrinking(false); 
           resolve();
         }, 600); 
       });
@@ -86,11 +86,11 @@ function App() {
         () =>
           new Promise((resolve) =>
             setTimeout(() => {
-              setCircleCenterSize(45); // Agrandar un 50%
-              setCircleTopY(-35); // Mover hacia arriba 30px
-              setCircleBottomY(35); // Mover hacia abajo 30px
-              setCircleRightX(35); // Mover hacia la derecha 30px
-              setCircleLeftX(-35); // Mover hacia la izquierda 30px
+              setCircleCenterSize(45); 
+              setCircleTopY(-35); 
+              setCircleBottomY(35); 
+              setCircleRightX(35);
+              setCircleLeftX(-35); 
               resolve();
             }, 400)
           ),
